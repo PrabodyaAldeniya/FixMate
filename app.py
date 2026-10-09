@@ -25,68 +25,100 @@ st.markdown(get_css(), unsafe_allow_html=True)
 
 def render_navigation():
     """Render the navigation bar."""
-    logo, menu, action = st.columns([2, 6, 2])
+    st.markdown("""
+    <style>
+    .fixmate-header {
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid #E4E7EC;
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
 
-    with logo:
-        st.title("FixMate")
+    .fixmate-header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1240px;
+        margin: 0 auto;
+        gap: 24px;
+        flex-wrap: nowrap;
+    }
 
-    with menu:
-        st.markdown(
-            """
-            <div style="display: flex; gap: 20px; padding-top: 4px;">
-                <a href="#" style="
-                    color: #667085;
-                    text-decoration: none;
-                    font-weight: 500;
-                    font-size: 14px;
-                    transition: color 0.2s;
-                ">Home</a>
-                <a href="#" style="
-                    color: #667085;
-                    text-decoration: none;
-                    font-weight: 500;
-                    font-size: 14px;
-                    transition: color 0.2s;
-                ">Services</a>
-                <a href="#" style="
-                    color: #667085;
-                    text-decoration: none;
-                    font-weight: 500;
-                    font-size: 14px;
-                    transition: color 0.2s;
-                ">How It Works</a>
-                <a href="#" style="
-                    color: #667085;
-                    text-decoration: none;
-                    font-weight: 500;
-                    font-size: 14px;
-                    transition: color 0.2s;
-                ">Professionals</a>
-                <a href="#" style="
-                    color: #667085;
-                    text-decoration: none;
-                    font-weight: 500;
-                    font-size: 14px;
-                    transition: color 0.2s;
-                ">Reviews</a>
+    .fixmate-logo {
+        flex-shrink: 0;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--fixmate-navy);
+    }
+
+    .fixmate-nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        flex-wrap: nowrap;
+    }
+
+    .fixmate-nav-link {
+        white-space: nowrap;
+        color: var(--fixmate-text);
+        font-size: 15px;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+
+    .fixmate-nav-link:hover {
+        color: var(--fixmate-orange);
+    }
+
+    .fixmate-header-cta {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
+    .fixmate-cta-btn {
+        background: #F97316;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        padding: 0 22px;
+        min-height: 44px;
+        font-size: 15px;
+        transition: background 0.2s;
+    }
+
+    .fixmate-cta-btn:hover {
+        background: #EA580C;
+        color: #FFFFFF;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="fixmate-header">
+        <div class="fixmate-header-inner">
+            <div class="fixmate-logo">FixMate</div>
+            <div class="fixmate-nav">
+                <a href="#" class="fixmate-nav-link">Home</a>
+                <a href="#" class="fixmate-nav-link">Services</a>
+                <a href="#" class="fixmate-nav-link">How It Works</a>
+                <a href="#" class="fixmate-nav-link">Professionals</a>
+                <a href="#" class="fixmate-nav-link">Reviews</a>
             </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-    with action:
-        st.button(
-            "Book a Service",
-            type="primary",
-            use_container_width=True,
-            key="navbar_book_service",
-        )
-
-    # Subtle border underneath navigation
-    st.markdown(
-        "<hr style='border: 1px solid #E4E7EC; margin-top: 0; margin-bottom: 0;'>",
-        unsafe_allow_html=True,
-    )
+            <div class="fixmate-header-cta">
+                <button class="fixmate-cta-btn">Book a Service</button>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 
 def render_hero():
@@ -95,13 +127,13 @@ def render_hero():
 
     with left:
         st.markdown(
-            '<span style="background: #E7F5FF; color: #0F2744; padding: 4px 12px; '
+            '<span style="background: var(--fixmate-blue-bg); color: var(--fixmate-navy); padding: 4px 12px; '
             'border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block;">'
             'Trusted professionals for every home</span>',
             unsafe_allow_html=True,
         )
         st.title("Home repairs made")
-        st.markdown('<span style="color: #F97316;">simple, fast & reliable.</span>', unsafe_allow_html=True)
+        st.markdown('<span style="color: var(--fixmate-orange);">simple, fast & reliable.</span>', unsafe_allow_html=True)
         st.write(
             "Book verified professionals for repairs, maintenance, cleaning "
             "and home improvement — all in one place."
@@ -173,27 +205,27 @@ def render_hero():
         prof = professionals[0]
         st.markdown(
             f'''
-            <div style="background: white; border-radius: 16px; border: 1px solid #E4E7EC; '
+            <div style="background: var(--fixmate-card); border-radius: 16px; border: 1px solid var(--fixmate-border); '
             f'padding: 24px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
                 <div style="width: 80px; height: 80px; border-radius: 50%; '
-                f'background: #F7F8FA; margin: 0 auto 16px; font-size: 32px; '
+                f'background: var(--fixmate-blue-bg); margin: 0 auto 16px; font-size: 32px; '
                 f'line-height: 80px; display: inline-block;">{prof["name"][0]}"</div>
-                <div style="color: #0F2744; font-weight: 600; margin-bottom: 4px;">{prof["name"]}</div>
-                <div style="color: #667085; font-size: 14px; margin-bottom: 8px;">{prof["profession"]}</div>
+                <div style="color: var(--fixmate-navy); font-weight: 600; margin-bottom: 4px;">{prof["name"]}</div>
+                <div style="color: var(--fixmate-muted); font-size: 14px; margin-bottom: 8px;">{prof["profession"]}</div>
                 <div style="margin: 8px 0;">
-                    <span style="background: #E7F5FF; color: #0F2744; padding: 4px 12px; '
+                    <span style="background: var(--fixmate-blue-bg); color: var(--fixmate-navy); padding: 4px 12px; '
                     'border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; margin-right: 6px;">'
                     'Verified Professional</span>
-                    <span style="color: #F97316; font-size: 18px; margin-left: 8;">★ {prof["rating"]}</span>
+                    <span style="color: var(--fixmate-orange); font-size: 18px; margin-left: 8;">★ {prof["rating"]}</span>
                 </div>
-                <div style="color: #667085; font-size: 14px; margin-bottom: 12px;">{prof["location"]}</div>
+                <div style="color: var(--fixmate-muted); font-size: 14px; margin-bottom: 12px;">{prof["location"]}</div>
                 <div style="margin-top: 16px;">
-                    <span style="background: #FFF4ED; color: #EA580C; padding: 4px 8px; '
+                    <span style="background: var(--fixmate-orange-bg); color: var(--fixmate-orange-hover); padding: 4px 8px; '
                     'border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; margin-right: 6px;">'
                     'Available Today</span>
-                    <span style="color: #667085; font-size: 14px;">{prof["experience"]}</span>
+                    <span style="color: var(--fixmate-muted); font-size: 14px;">{prof["experience"]}</span>
                 </div>
-                <div style="font-size: 18px; color: #F97316; font-weight: 700; margin-top: 16px;">From Rs. {prof["starting_price"]}</div>
+                <div style="font-size: 18px; color: var(--fixmate-orange); font-weight: 700; margin-top: 16px;">From Rs. {prof["starting_price"]}</div>
             </div>
             ''',
             unsafe_allow_html=True,
@@ -259,7 +291,7 @@ def render_popular_services():
             with column:
                 st.markdown(f"### {service['icon']} {service['name']}")
                 st.write(service["short_description"])
-                st.markdown(f"**Starting price: {service['starting_price']}**")
+                st.markdown(f'<span class="price-tag">{service["starting_price"]}</span>', unsafe_allow_html=True)
                 st.button(
                     "Explore Service →",
                     key=f"service_{service['id']}",
@@ -271,21 +303,21 @@ def render_emergency_banner():
     """Render emergency service banner."""
     st.markdown(
         """
-        <div style="background: #FFF4ED; padding: 24px; border-radius: 16px; 
-                    margin: 24px 0; text-align: center; border-left: 4px solid #F97316;">
-            <h3 style="color: #EA580C; font-size: 24px; margin-bottom: 8px;">
+        <div style="background: var(--fixmate-orange-bg); padding: 24px; border-radius: 16px; 
+                    margin: 24px 0; text-align: center; border-left: 4px solid var(--fixmate-orange);">
+            <h3 style="color: var(--fixmate-orange-hover); font-size: 24px; margin-bottom: 8px;">
                 Need urgent help?</h3>
-            <p style="color: #667085; font-size: 16px; margin-top: 0;">
+            <p style="color: var(--fixmate-muted); font-size: 16px; margin-top: 0;">
                 Find available professionals for urgent electrical, plumbing or home repair issues.</p>
             <div style="margin: 24px 0;">
                 <button style="
-                    background: #F97316; color: #0F2744; padding: 12px 24px;
+                    background: var(--fixmate-orange); color: var(--fixmate-soft-white); padding: 12px 24px;
                     border-radius: 10px; font-weight: 600; font-size: 16px;
                     border: none; cursor: pointer; transition: background 0.2s;">
                     Find Emergency Help
                 </button>
             </div>
-            <p style="color: #98A2B3; font-size: 14px;">
+            <p style="color: var(--fixmate-muted); font-size: 14px;">
                 Frontend demo only - booking flow coming soon.
             </p>
         </div>

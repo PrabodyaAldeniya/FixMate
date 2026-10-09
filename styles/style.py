@@ -9,8 +9,24 @@ def render_html(html):
 def get_css():
     return """
     <style>
+    :root {
+        --fixmate-navy: #0F2744;
+        --fixmate-navy-2: #183B5B;
+        --fixmate-orange: #F97316;
+        --fixmate-orange-hover: #EA580C;
+        --fixmate-bg: #F7F8FA;
+        --fixmate-card: #FFFFFF;
+        --fixmate-text: #10233F;
+        --fixmate-muted: #667085;
+        --fixmate-border: #E4E7EC;
+        --fixmate-success: #12B76A;
+        --fixmate-orange-bg: #FFF4ED;
+        --fixmate-blue-bg: #F2F6FA;
+        --fixmate-soft-white: #FFF;
+    }
+
     .stApp {
-        background-color: #F7F8FA;
+        background-color: var(--fixmate-bg);
     }
 
     .block-container {
@@ -22,29 +38,29 @@ def get_css():
     }
 
     h1, h2, h3, h4, h5, h6 {
-        color: #10233F;
+        color: var(--fixmate-navy);
         font-weight: 700;
     }
 
     p, div {
-        color: #667085;
+        color: var(--fixmate-muted);
         font-size: 15px;
         line-height: 1.6;
     }
 
     a {
-        color: #0F2744;
+        color: var(--fixmate-navy);
         text-decoration: none;
         font-weight: 500;
         transition: color 0.2s;
     }
 
     a:hover {
-        color: #F97316;
+        color: var(--fixmate-orange);
     }
 
     .nav-link {
-        color: #667085;
+        color: var(--fixmate-text);
         font-weight: 500;
         text-decoration: none;
         transition: color 0.2s;
@@ -53,13 +69,13 @@ def get_css():
     }
 
     .nav-link:hover {
-        color: #0F2744;
-        background: #F7F8FA;
+        color: var(--fixmate-orange);
+        background: var(--fixmate-soft-white);
     }
 
     .cta-primary {
-        background: #F97316;
-        color: #0F2744;
+        background: var(--fixmate-orange);
+        color: var(--fixmate-soft-white);
         padding: 12px 24px;
         border-radius: 10px;
         font-weight: 600;
@@ -70,31 +86,31 @@ def get_css():
     }
 
     .cta-primary:hover {
-        background: #EA580C;
-        color: #0F2744;
+        background: var(--fixmate-orange-hover);
+        color: var(--fixmate-soft-white);
     }
 
     .cta-secondary {
-        background: transparent;
-        color: #0F2744;
+        background: var(--fixmate-card);
+        color: var(--fixmate-navy);
         padding: 12px 24px;
         border-radius: 10px;
         font-weight: 600;
         font-size: 16px;
-        border: 1px solid #0F2744;
+        border: 1px solid var(--fixmate-border);
         cursor: pointer;
         transition: all 0.2s;
     }
 
     .cta-secondary:hover {
-        background: #F97316;
-        color: #0F2744;
+        background: var(--fixmate-orange);
+        color: var(--fixmate-soft-white);
     }
 
     .card {
-        background: white;
+        background: var(--fixmate-card);
         border-radius: 16px;
-        border: 1px solid #E4E7EC;
+        border: 1px solid var(--fixmate-border);
         padding: 24px;
         transition: box-shadow 0.2s;
     }
@@ -104,9 +120,9 @@ def get_css():
     }
 
     .trust-card {
-        background: white;
+        background: var(--fixmate-card);
         border-radius: 12px;
-        border: 1px solid #E4E7EC;
+        border: 1px solid var(--fixmate-border);
         padding: 20px;
         text-align: center;
         transition: transform 0.2s;
@@ -117,9 +133,9 @@ def get_css():
     }
 
     .prof-card {
-        background: white;
+        background: var(--fixmate-card);
         border-radius: 12px;
-        border: 1px solid #E4E7EC;
+        border: 1px solid var(--fixmate-border);
         padding: 24px;
         transition: box-shadow 0.2s;
     }
@@ -129,30 +145,30 @@ def get_css():
     }
 
     .review-card {
-        background: white;
+        background: var(--fixmate-card);
         border-radius: 12px;
-        border: 1px solid #E4E7EC;
+        border: 1px solid var(--fixmate-border);
         padding: 20px;
     }
 
     .section-title {
         font-size: 32px;
         font-weight: 700;
-        color: #10233F;
+        color: var(--fixmate-navy);
         margin-top: 40px;
         margin-bottom: 20px;
     }
 
     .subheading {
-        color: #667085;
+        color: var(--fixmate-muted);
         font-size: 16px;
         margin-bottom: 35px;
     }
 
     .chip {
         display: inline-block;
-        background: #F7F8FA;
-        color: #667085;
+        background: var(--fixmate-soft-white);
+        color: var(--fixmate-text);
         padding: 6px 12px;
         border-radius: 20px;
         font-size: 13px;
@@ -160,16 +176,17 @@ def get_css():
         margin-right: 6px;
         margin-bottom: 6px;
         transition: all 0.2s;
+        border: 1px solid var(--fixmate-border);
     }
 
     .chip:hover {
-        background: #0F2744;
-        color: white;
+        background: var(--fixmate-orange);
+        color: var(--fixmate-soft-white);
     }
 
     .verified-badge {
-        background: #E7F5FF;
-        color: #0F2744;
+        background: var(--fixmate-blue-bg);
+        color: var(--fixmate-navy);
         padding: 4px 12px;
         border-radius: 20px;
         font-size: 12px;
@@ -179,18 +196,18 @@ def get_css():
     }
 
     .rating-stars {
-        color: #F97316;
+        color: var(--fixmate-orange);
         font-size: 18px;
     }
 
     .price-tag {
-        color: #F97316;
+        color: var(--fixmate-orange);
         font-weight: 600;
     }
 
     .nav-button {
         background: transparent;
-        color: #667085;
+        color: var(--fixmate-muted);
         border: none;
         font-weight: 500;
         font-size: 14px;
@@ -200,8 +217,16 @@ def get_css():
     }
 
     .nav-button:hover {
-        color: #0F2744;
-        border-bottom: 2px solid #0F2744;
+        color: var(--fixmate-navy);
+        border-bottom: 2px solid var(--fixmate-navy);
+    }
+
+    .stButton > button {
+        transition: all 0.2s;
+    }
+
+    .stButton > button:hover {
+        color: var(--fixmate-soft-white);
     }
 
     @media (max-width: 768px) {
@@ -220,6 +245,46 @@ def get_css():
         .chip {
             font-size: 11px;
             padding: 5px 8px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .fixmate-header-inner {
+            gap: 16px;
+        }
+
+        .fixmate-nav-link {
+            font-size: 13px;
+            padding: 6px 8px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .fixmate-header {
+            padding: 0 0.5rem;
+        }
+
+        .fixmate-header-inner {
+            gap: 8px;
+        }
+
+        .fixmate-logo {
+            font-size: 18px;
+        }
+
+        .fixmate-nav {
+            gap: 4px;
+        }
+
+        .fixmate-nav-link {
+            font-size: 11px;
+            padding: 4px 6px;
+        }
+
+        .fixmate-header-cta button {
+            font-size: 12px;
+            padding: 6px 12px;
+            min-height: 36px;
         }
     }
     </style>
