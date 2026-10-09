@@ -1,3 +1,6 @@
+import base64
+from pathlib import Path
+
 import streamlit as st
 
 from data.services import services
@@ -5,13 +8,28 @@ from data.professionals import professionals
 from data.reviews import reviews
 from styles.style import get_css
 
+
+def get_logo_data_uri():
+    """Load logo image from assets folder and return as data URI."""
+    logo_path = Path(__file__).parent / "assets" / "fixmate_logo.png"
+    if not logo_path.exists():
+        return None
+    encoded = base64.b64encode(logo_path.read_bytes()).decode("utf-8")
+    return f"data:image/png;base64,{encoded}"
+
 # ==========================================
 # PAGE CONFIGURATION
 # ==========================================
 
+logo_data_uri = get_logo_data_uri()
+if logo_data_uri:
+    page_icon = logo_data_uri
+else:
+    page_icon = "🛠️"
+
 st.set_page_config(
     page_title="FixMate",
-    page_icon="🛠️",
+    page_icon=page_icon,
     layout="wide"
 )
 
@@ -52,7 +70,15 @@ def render_navigation():
         flex-wrap: nowrap;
     }
 
-    .fixmate-logo {
+    .fixmate-logo-image {
+        width: 52px;
+        height: 52px;
+        object-fit: contain;
+        display: block;
+        flex-shrink: 0;
+    }
+
+    .fixmate-logo-text {
         flex-shrink: 0;
         font-size: 40px;
         font-weight: 800;
@@ -103,7 +129,8 @@ def render_navigation():
 
     <div class="fixmate-header">
         <div class="fixmate-header-inner">
-            <div class="fixmate-logo">FixMate</div>
+            {f'<img src="{logo_data_uri}" class="fixmate-logo-image" alt="FixMate logo">' if logo_data_uri else ""}
+            <div class="fixmate-logo-text">FixMate</div>
             <div class="fixmate-nav">
                 <a href="#" class="fixmate-nav-link">Home</a>
                 <a href="#" class="fixmate-nav-link">Services</a>
@@ -121,7 +148,8 @@ def render_navigation():
     st.markdown("""
     <div class="fixmate-header">
         <div class="fixmate-header-inner">
-            <div class="fixmate-logo">FixMate</div>
+            {f'<img src="{logo_data_uri}" class="fixmate-logo-image" alt="FixMate logo">' if logo_data_uri else ""}
+            <div class="fixmate-logo-text">FixMate</div>
             <div class="fixmate-nav">
                 <a href="#" class="fixmate-nav-link">Home</a>
                 <a href="#" class="fixmate-nav-link">Services</a>
