@@ -9,19 +9,38 @@ def render_html(html):
 def get_css():
     return """
     <style>
-
     .stApp {
         background-color: #F7F8FA;
     }
 
     .block-container {
-        max-width: 1250px;
+        max-width: 1240px;
         padding-top: 2rem;
         padding-bottom: 2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     h1, h2, h3, h4, h5, h6 {
         color: #10233F;
+        font-weight: 700;
+    }
+
+    p, div {
+        color: #667085;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    a {
+        color: #0F2744;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: #F97316;
     }
 
     .nav-link {
@@ -29,15 +48,18 @@ def get_css():
         font-weight: 500;
         text-decoration: none;
         transition: color 0.2s;
+        padding: 8px 12px;
+        border-radius: 6px;
     }
 
     .nav-link:hover {
         color: #0F2744;
+        background: #F7F8FA;
     }
 
     .cta-primary {
-        background: #0F2744;
-        color: white;
+        background: #F97316;
+        color: #0F2744;
         padding: 12px 24px;
         border-radius: 10px;
         font-weight: 600;
@@ -48,7 +70,7 @@ def get_css():
     }
 
     .cta-primary:hover {
-        background: #F97316;
+        background: #EA580C;
         color: #0F2744;
     }
 
@@ -72,19 +94,19 @@ def get_css():
     .card {
         background: white;
         border-radius: 16px;
-        border: 1px solid #E7E9EE;
+        border: 1px solid #E4E7EC;
         padding: 24px;
         transition: box-shadow 0.2s;
     }
 
     .card:hover {
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
     }
 
     .trust-card {
         background: white;
         border-radius: 12px;
-        border: 1px solid #E7E9EE;
+        border: 1px solid #E4E7EC;
         padding: 20px;
         text-align: center;
         transition: transform 0.2s;
@@ -97,8 +119,8 @@ def get_css():
     .prof-card {
         background: white;
         border-radius: 12px;
-        border: 1px solid #E7E9EE;
-        padding: 20px;
+        border: 1px solid #E4E7EC;
+        padding: 24px;
         transition: box-shadow 0.2s;
     }
 
@@ -109,7 +131,7 @@ def get_css():
     .review-card {
         background: white;
         border-radius: 12px;
-        border: 1px solid #E7E9EE;
+        border: 1px solid #E4E7EC;
         padding: 20px;
     }
 
@@ -200,6 +222,5 @@ def get_css():
             padding: 5px 8px;
         }
     }
-
     </style>
     """
