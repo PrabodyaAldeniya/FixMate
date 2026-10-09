@@ -25,7 +25,7 @@ logo_data_uri = get_logo_data_uri()
 if logo_data_uri:
     page_icon = logo_data_uri
 else:
-    page_icon = "🛠️"
+    page_icon = "ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂºÃ‚Â ÃƒÂ¯Ã‚Â¸"
 
 st.set_page_config(
     page_title="FixMate",
@@ -145,26 +145,6 @@ def render_navigation():
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("""
-    <div class="fixmate-header">
-        <div class="fixmate-header-inner">
-            {f'<img src="{logo_data_uri}" class="fixmate-logo-image" alt="FixMate logo">' if logo_data_uri else ""}
-            <div class="fixmate-logo-text">FixMate</div>
-            <div class="fixmate-nav">
-                <a href="#" class="fixmate-nav-link">Home</a>
-                <a href="#" class="fixmate-nav-link">Services</a>
-                <a href="#" class="fixmate-nav-link">How It Works</a>
-                <a href="#" class="fixmate-nav-link">Professionals</a>
-                <a href="#" class="fixmate-nav-link">Reviews</a>
-            </div>
-            <div class="fixmate-header-cta">
-                <button class="fixmate-cta-btn">Book a Service</button>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-
 def render_hero():
     """Render the hero section with service search."""
     left, right = st.columns([0.58, 0.42], gap="large")
@@ -177,7 +157,7 @@ def render_hero():
         )
         st.write(
             "Book verified professionals for repairs, maintenance, cleaning "
-            "and home improvement — all in one place."
+            "and home improvement ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬ all in one place."
         )
 
         st.text_input(
@@ -220,7 +200,7 @@ def render_hero():
                     <span style="background: var(--fixmate-blue-bg); color: var(--fixmate-navy); padding: 4px 12px; '
                     'border-radius: 20px; font-size: 11px; font-weight: 600; display: inline-block; margin-right: 6px;">'
                     'Verified Professional</span>
-                    <span style="color: var(--fixmate-orange); font-size: 22px; margin-left: 6;">★ {prof["rating"]}</span>
+                    <span style="color: var(--fixmate-orange); font-size: 22px; margin-left: 6;">ÃƒÂ¢Ã‹Å“Ã¢â‚¬Â¦ {prof["rating"]}</span>
                 </div>
                 <div style="color: var(--fixmate-muted); font-size: 14px; margin-bottom: 12px;">'
                 f'{prof["location"]}</div>
@@ -332,7 +312,7 @@ def render_popular_services():
                     'font-weight: 600;'
                     'font-size: 14px;'
                     'text-decoration: underline;'
-                    'transition: color 0.2s;">Explore Service →</a>'
+                    'transition: color 0.2s;">Explore Service ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢</a>'
                     '</div>'
                     '</div>',
                     unsafe_allow_html=True,
@@ -449,7 +429,7 @@ def render_why_fixmate():
         st.markdown(
             """
             <div class="prof-card" style="height: 100%;">
-                <div style="font-size: 28px; margin-bottom: 20px;">⚡</div>
+                <div style="font-size: 28px; margin-bottom: 20px;">ÃƒÂ¢Ã…Â¡Ã‚Â¡</div>
                 <h4 style="color: #10233F; font-size: 20px; margin-bottom: 8px;">Verified Professionals</h4>
                 <p style="color: #667085; font-size: 15px; line-height: 1.5;">
                     All pros are screened and verified.
@@ -465,7 +445,7 @@ def render_why_fixmate():
             <div class="prof-card" style="height: 100%;">
                 <div style="background: #FFF4ED; border-radius: 12px; width: 48px; height: 48px; 
                     display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                    <span style="color: #EA580C; font-size: 20px;">₹</span>
+                    <span style="color: #EA580C; font-size: 20px;">ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¹</span>
                 </div>
                 <h4 style="color: #10233F; font-size: 20px; margin-bottom: 8px;">Transparent Pricing</h4>
                 <p style="color: #667085; font-size: 15px; line-height: 1.5;">
@@ -482,7 +462,7 @@ def render_why_fixmate():
             <div class="prof-card" style="height: 100%;">
                 <div style="background: #E7F5FF; border-radius: 12px; width: 48px; height: 48px; 
                     display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                    <span style="color: #0F2744; font-size: 20px;">⏰</span>
+                    <span style="color: #0F2744; font-size: 20px;">ÃƒÂ¢Ã‚Â°</span>
                 </div>
                 <h4 style="color: #10233F; font-size: 20px; margin-bottom: 8px;">Flexible Scheduling</h4>
                 <p style="color: #667085; font-size: 15px; line-height: 1.5;">
@@ -499,7 +479,7 @@ def render_why_fixmate():
             <div class="prof-card" style="height: 100%;">
                 <div style="background: #E7F5FF; border-radius: 12px; width: 48px; height: 48px; 
                     display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                    <span style="color: #0F2744; font-size: 20px;">💬</span>
+                    <span style="color: #0F2744; font-size: 20px;">ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â¬</span>
                 </div>
                 <h4 style="color: #10233F; font-size: 20px; margin-bottom: 8px;">Service Support</h4>
                 <p style="color: #667085; font-size: 15px; line-height: 1.5;">
@@ -542,13 +522,13 @@ def render_featured_professionals():
                          'padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; '
                          'display: inline-block; margin-top: 8;">{verified_badge}</span>' if verified_badge else ""}
                         <div style="color: var(--fixmate-muted); font-size: 13px; margin-bottom: 4px;">
-                            ★ {prof["rating"]} ({prof["review_count"]} reviews)</div>
+                            ÃƒÂ¢Ã‹Å“Ã¢â‚¬Â¦ {prof["rating"]} ({prof["review_count"]} reviews)</div>
                         <div style="color: var(--fixmate-muted); font-size: 13px; margin-bottom: 4px;">
-                            📍 {prof["location"]}</div>
+                            ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“ {prof["location"]}</div>
                         <div style="color: var(--fixmate-muted); font-size: 13px; margin-bottom: 4px;">
-                            💪 {prof["experience"]}</div>
+                            ÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Âª {prof["experience"]}</div>
                         <div style="color: var(--fixmate-muted); font-size: 13px; margin-bottom: 4px;">
-                            ✅ {prof["completed_jobs"]} completed jobs</div>
+                            ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ {prof["completed_jobs"]} completed jobs</div>
                         <div style="color: var(--fixmate-muted); font-size: 13px; margin-bottom: 12px;">
                             {prof["availability"]}</div>
                         <div style="color: var(--fixmate-orange); font-size: 15px; font-weight: 700;">
@@ -598,18 +578,18 @@ def render_customer_reviews():
                 f'<div style="background: white; border-radius: 16px; border: 1px solid #E4E7EC;'
                 f'padding: 24px; min-height: 180px;">'
                 f'<div style="display: flex; align-items: center; margin-bottom: 16px;">'
-                f'<span style="color: #F97316; font-size: 24px;">★★★★★</span>'
+                f'<span style="color: #F97316; font-size: 24px;">ÃƒÂ¢Ã‹Å“Ã¢â‚¬Â¦ÃƒÂ¢Ã‹Å“Ã¢â‚¬Â¦ÃƒÂ¢Ã‹Å“Ã¢â‚¬Â¦ÃƒÂ¢Ã‹Å“Ã¢â‚¬Â¦ÃƒÂ¢Ã‹Å“Ã¢â‚¬Â¦</span>'
                 f'</div>'
                 f'<p style="color: #667085; font-size: 15px; margin: 8px 0;">'
                 f'{review_text}</p>'
                 f'<div style="display: flex; justify-content: space-between; '
                 f'align-items: center; color: #667085; font-size: 14px;">'
                 f'<span>{customer_name}</span>'
-                f'<span>{service_name} · {date}</span>'
+                f'<span>{service_name} Ãƒâ€šÃ‚Â· {date}</span>'
                 f'</div>'
                 f'</div>',
-                unsafe_allow_html=True,
-            )
+unsafe_allow_html=True,
+)
 
 
 def render_trust_row():
@@ -665,7 +645,7 @@ def render_cta():
         '<p style="background: var(--fixmate-orange); padding: 12px 24px; '
         'border-radius: 10px; margin: 24px 0; font-size: 14px; display: inline-block; '
         'color: var(--fixmate-navy);">'
-        'No hidden fees • Verified experts • Flexible scheduling</p>',
+        'No hidden fees ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Verified experts ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Flexible scheduling</p>',
         unsafe_allow_html=True,
     )
 
@@ -677,16 +657,13 @@ def render_footer():
         <div style="background: var(--fixmate-navy); color: white; padding: 48px 24px 32px;
                     border-radius: 0 0 16px 16px;">
             <div style="display: flex; align-items: center; margin-bottom: 24px;">
-                <span style="font-size: 24px; margin-right: 8px;">🛠️</span>
+                <span style="font-size: 24px; margin-right: 8px;">ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂºÃ‚Â ÃƒÂ¯Ã‚Â¸</span>
                 <span style="font-size: 28px; font-weight: 700;">FixMate</span>
             </div>
-            <p style="color: #98A2B3; font-size: 14px; line-height: 1.6;">
+<p style="color: #98A2B3; font-size: 14px; line-height: 1.6;">
                 Trusted home services, one click away.
             </p>
-            <div style="display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap;">
-                < 0
- 0
-  Vote: 
+<div style="display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap;">
                 <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;
                     transition: color 0.2s;">Electrical</a>
                 <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;
@@ -698,9 +675,24 @@ def render_footer():
             </div>
             <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #E4E7EC;
                         color: #98A2B3; font-size: 13px; text-align: center;">
-                © 2026 FixMate. All rights reserved.
+                Ãƒâ€šÃ‚Â© 2026 FixMate. All rights reserved.
             </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
+
+
+render_navigation()
+render_hero()
+render_quick_service_categories()
+render_trust_indicators_and_stats()
+render_popular_services()
+render_emergency_banner()
+render_how_it_works()
+render_why_fixmate()
+render_featured_professionals()
+render_customer_reviews()
+render_trust_row()
+render_cta()
+render_footer()
