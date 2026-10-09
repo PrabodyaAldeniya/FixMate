@@ -1,4 +1,4 @@
-import streamlit as st
+﻿import streamlit as st
 
 from data.services import services
 from data.professionals import professionals
@@ -11,7 +11,7 @@ from styles.style import get_css
 
 st.set_page_config(
     page_title="FixMate",
-    page_icon="🛠️",
+    page_icon="ðŸ› ï¸",
     layout="wide"
 )
 
@@ -149,7 +149,7 @@ def render_hero():
         )
         st.write(
             "Book verified professionals for repairs, maintenance, cleaning "
-            "and home improvement — all in one place."
+            "and home improvement â€” all in one place."
         )
 
         st.text_input(
@@ -175,7 +175,7 @@ def render_hero():
 
     with right:
         prof = professionals[0]
-        initials = prof['name'].split()[0][0] + prof['name'].split()[-1][0]
+        initials = prof['name'].split()[0][:2]
         st.markdown(
             f'''
             <div style="background: var(--fixmate-card); border-radius: 16px; border: 1px solid var(--fixmate-border); '
@@ -192,7 +192,7 @@ def render_hero():
                     <span style="background: var(--fixmate-blue-bg); color: var(--fixmate-navy); padding: 4px 12px; '
                     'border-radius: 20px; font-size: 11px; font-weight: 600; display: inline-block; margin-right: 6px;">'
                     'Verified Professional</span>
-                    <span style="color: var(--fixmate-orange); font-size: 22px; margin-left: 6;">★ {prof["rating"]}</span>
+                    <span style="color: var(--fixmate-orange); font-size: 22px; margin-left: 6;">â˜… {prof["rating"]}</span>
                 </div>
                 <div style="color: var(--fixmate-muted); font-size: 14px; margin-bottom: 12px;">'
                 f'{prof["location"]}</div>
@@ -304,11 +304,12 @@ def render_popular_services():
                     'font-weight: 600;'
                     'font-size: 14px;'
                     'text-decoration: underline;'
-                    'transition: color 0.2s;">Explore Service →</a>'
+                    'transition: color 0.2s;">Explore Service â†’</a>'
                     '</div>'
                     '</div>',
                     unsafe_allow_html=True,
                 )
+
 
 def render_emergency_banner():
     """Render emergency service banner."""
@@ -340,7 +341,7 @@ def render_emergency_banner():
 def render_how_it_works():
     """Render how fixate works steps."""
     st.markdown(
-        '<h2 style="color: #10233F; font-size: 34px; margin-bottom: 24px;">'
+        '<h2 style="color: #10233F; font-size: 32px; margin-bottom: 24px;">'
         'Book a trusted professional in minutes.</h2>',
         unsafe_allow_html=True,
     )
@@ -351,55 +352,56 @@ def render_how_it_works():
 
     with step1:
         st.markdown(
-            '<div style="background: white; border-radius: 16px; border: 1px solid #E4E7EC;'
-            'padding: 32px; text-align: center; height: 100%; min-height: 180px;">'
-            '<div style="width: 56px; height: 56px; border-radius: 50px; background: #F97316;'
-            'color: white; font-size: 32px; display: flex; align-items: center;'
-            'justify-content: center; margin: 0 auto 20px; padding-top: 8px;">01</div>'
-            '<h4 style="color: #10233F; font-size: 22px; margin-bottom: 8px;">Tell us</h4>'
-            '<p style="color: #667085; font-size: 15px;">Tell us what you need</p>'
+            '<div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;'
+            'padding: 24px; text-align: center; height: 100%; min-height: 140px;">'
+            '<div style="width: 48px; height: 48px; border-radius: 50px; background: #F97316;'
+            'color: white; font-size: 24px; display: flex; align-items: center;'
+            'justify-content: center; margin: 0 auto 16px; padding-top: 8px;">01</div>'
+            '<h4 style="color: #10233F; font-size: 18px; margin-bottom: 4px;">Tell us</h4>'
+            '<p style="color: #667085; font-size: 14px;">Tell us what you need</p>'
             '</div>',
             unsafe_allow_html=True,
         )
 
     with step2:
         st.markdown(
-            '<div style="background: white; border-radius: 16px; border: 1px solid #E4E7EC;'
-            'padding: 32px; text-align: center; height: 100%; min-height: 180px;">'
-            '<div style="width: 56px; height: 56px; border-radius: 50px; background: #F97316;'
-            'color: white; font-size: 32px; display: flex; align-items: center;'
-            'justify-content: center; margin: 0 auto 20px; padding-top: 8px;">02</div>'
-            '<h4 style="color: #10233F; font-size: 22px; margin-bottom: 8px;">Choose</h4>'
-            '<p style="color: #667085; font-size: 15px;">Choose your professional</p>'
+            '<div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;'
+            'padding: 24px; text-align: center; height: 100%; min-height: 140px;">'
+            '<div style="width: 48px; height: 48px; border-radius: 50px; background: #F97316;'
+            'color: white; font-size: 24px; display: flex; align-items: center;'
+            'justify-content: center; margin: 0 auto 16px; padding-top: 8px;">02</div>'
+            '<h4 style="color: #10233F; font-size: 18px; margin-bottom: 4px;">Choose</h4>'
+            '<p style="color: #667085; font-size: 14px;">Choose your professional</p>'
             '</div>',
             unsafe_allow_html=True,
         )
 
     with step3:
         st.markdown(
-            '<div style="background: white; border-radius: 16px; border: 1px solid #E4E7EC;'
-            'padding: 32px; text-align: center; height: 100%; min-height: 180px;">'
-            '<div style="width: 56px; height: 56px; border-radius: 50px; background: #F97316;'
-            'color: white; font-size: 32px; display: flex; align-items: center;'
-            'justify-content: center; margin: 0 auto 20px; padding-top: 8px;">03</div>'
-            '<h4 style="color: #10233F; font-size: 22px; margin-bottom: 8px;">Pick</h4>'
-            '<p style="color: #667085; font-size: 15px;">Pick your time</p>'
+            '<div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;'
+            'padding: 24px; text-align: center; height: 100%; min-height: 140px;">'
+            '<div style="width: 48px; height: 48px; border-radius: 50px; background: #F97316;'
+            'color: white; font-size: 24px; display: flex; align-items: center;'
+            'justify-content: center; margin: 0 auto 16px; padding-top: 8px;">03</div>'
+            '<h4 style="color: #10233F; font-size: 18px; margin-bottom: 4px;">Pick</h4>'
+            '<p style="color: #667085; font-size: 14px;">Pick your time</p>'
             '</div>',
             unsafe_allow_html=True,
         )
 
     with step4:
         st.markdown(
-            '<div style="background: white; border-radius: 16px; border: 1px solid #E4E7EC;'
-            'padding: 32px; text-align: center; height: 100%; min-height: 180px;">'
-            '<div style="width: 56px; height: 56px; border-radius: 50px; background: #F97316;'
-            'color: white; font-size: 32px; display: flex; align-items: center;'
-            'justify-content: center; margin: 0 auto 20px; padding-top: 8px;">04</div>'
-            '<h4 style="color: #10233F; font-size: 22px; margin-bottom: 8px;">Get</h4>'
-            '<p style="color: #667085; font-size: 15px;">Get it done</p>'
+            '<div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;'
+            'padding: 24px; text-align: center; height: 100%; min-height: 140px;">'
+            '<div style="width: 48px; height: 48px; border-radius: 50px; background: #F97316;'
+            'color: white; font-size: 24px; display: flex; align-items: center;'
+            'justify-content: center; margin: 0 auto 16px; padding-top: 8px;">04</div>'
+            '<h4 style="color: #10233F; font-size: 18px; margin-bottom: 4px;">Get</h4>'
+            '<p style="color: #667085; font-size: 14px;">Get it done</p>'
             '</div>',
             unsafe_allow_html=True,
         )
+
 
 def render_why_fixmate():
     """Render why FixMate section."""
@@ -421,7 +423,7 @@ def render_why_fixmate():
         st.markdown(
             """
             <div class="prof-card" style="height: 100%;">
-                <div style="font-size: 28px; margin-bottom: 20px;">⚡</div>
+                <div style="font-size: 28px; margin-bottom: 20px;">âš¡</div>
                 <h4 style="color: #10233F; font-size: 20px; margin-bottom: 8px;">Verified Professionals</h4>
                 <p style="color: #667085; font-size: 15px; line-height: 1.5;">
                     All pros are screened and verified.
@@ -437,7 +439,7 @@ def render_why_fixmate():
             <div class="prof-card" style="height: 100%;">
                 <div style="background: #FFF4ED; border-radius: 12px; width: 48px; height: 48px; 
                     display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                    <span style="color: #EA580C; font-size: 20px;">₹</span>
+                    <span style="color: #EA580C; font-size: 20px;">â‚¹</span>
                 </div>
                 <h4 style="color: #10233F; font-size: 20px; margin-bottom: 8px;">Transparent Pricing</h4>
                 <p style="color: #667085; font-size: 15px; line-height: 1.5;">
@@ -454,7 +456,7 @@ def render_why_fixmate():
             <div class="prof-card" style="height: 100%;">
                 <div style="background: #E7F5FF; border-radius: 12px; width: 48px; height: 48px; 
                     display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                    <span style="color: #0F2744; font-size: 20px;">⏰</span>
+                    <span style="color: #0F2744; font-size: 20px;">â°</span>
                 </div>
                 <h4 style="color: #10233F; font-size: 20px; margin-bottom: 8px;">Flexible Scheduling</h4>
                 <p style="color: #667085; font-size: 15px; line-height: 1.5;">
@@ -471,7 +473,7 @@ def render_why_fixmate():
             <div class="prof-card" style="height: 100%;">
                 <div style="background: #E7F5FF; border-radius: 12px; width: 48px; height: 48px; 
                     display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                    <span style="color: #0F2744; font-size: 20px;">💬</span>
+                    <span style="color: #0F2744; font-size: 20px;">ðŸ’¬</span>
                 </div>
                 <h4 style="color: #10233F; font-size: 20px; margin-bottom: 8px;">Service Support</h4>
                 <p style="color: #667085; font-size: 15px; line-height: 1.5;">
@@ -481,6 +483,7 @@ def render_why_fixmate():
             """,
             unsafe_allow_html=True,
         )
+
 
 def render_featured_professionals():
     """Render featured professionals grid."""
@@ -493,7 +496,7 @@ def render_featured_professionals():
 
         for column, prof in zip(columns, current_profs):
             with column:
-                initials = prof['name'].split()[0][0] + prof['name'].split()[-1][0]
+                initials = prof['name'].split()[0][:2]
                 verified_badge = 'Verified Professional' if prof['verified'] else ''
 
                 st.markdown(
@@ -514,13 +517,13 @@ def render_featured_professionals():
                          'padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; '
                          'display: inline-block; margin-top: 8;">{verified_badge}</span>' if verified_badge else ""}
                         <div style="color: var(--fixmate-muted); font-size: 13px; margin-bottom: 4px;">
-                            ★ {prof["rating"]} ({prof["review_count"]} reviews)</div>
+                            â˜… {prof["rating"]} ({prof["review_count"]} reviews)</div>
                         <div style="color: var(--fixmate-muted); font-size: 13px; margin-bottom: 4px;">
-                            📍 {prof["location"]}</div>
+                            ðŸ“ {prof["location"]}</div>
                         <div style="color: var(--fixmate-muted); font-size: 13px; margin-bottom: 4px;">
-                            💪 {prof["experience"]}</div>
+                            ðŸ’ª {prof["experience"]}</div>
                         <div style="color: var(--fixmate-muted); font-size: 13px; margin-bottom: 4px;">
-                            ✅ {prof["completed_jobs"]} completed jobs</div>
+                            âœ… {prof["completed_jobs"]} completed jobs</div>
                         <div style="color: var(--fixmate-muted); font-size: 13px; margin-bottom: 12px;">
                             {prof["availability"]}</div>
                         <div style="color: var(--fixmate-orange); font-size: 15px; font-weight: 700;">
@@ -567,21 +570,21 @@ def render_customer_reviews():
             date = review.get("date", "")
 
             st.markdown(
-                f'<div style="background: white; border-radius: 16px; border: 1px solid #E4E7EC;'
-                f'padding: 24px; min-height: 180px;">'
-                f'<div style="display: flex; align-items: center; margin-bottom: 16px;">'
-                f'<span style="color: #F97316; font-size: 24px;">★★★★★</span>'
+                f'<div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;'
+                f'padding: 20px; height: 100%;">'
+                f'<div style="display: flex; align-items: center; margin-bottom: 12px;">'
+                f'<span style="color: #F97316; font-size: 18px;">â˜…â˜…â˜…â˜…â˜…</span>'
                 f'</div>'
-                f'<p style="color: #667085; font-size: 15px; margin: 8px 0;">'
-                f'{review_text}</p>'
+                f'<p style="color: #667085; font-size: 14px; margin: 8px 0;">{review_text}</p>'
                 f'<div style="display: flex; justify-content: space-between; '
-                f'align-items: center; color: #667085; font-size: 14px;">'
+                f'align-items: center; color: #667085; font-size: 13px;">'
                 f'<span>{customer_name}</span>'
-                f'<span>{service_name} · {date}</span>'
+                f'<span>{service_name} Â· {date}</span>'
                 f'</div>'
                 f'</div>',
                 unsafe_allow_html=True,
             )
+            st.write("")
 
 
 def render_trust_row():
@@ -605,9 +608,9 @@ def render_cta():
     st.write("")
 
     st.markdown(
-        '<div style="background: var(--fixmate-navy); padding: 32px 24px; '
-        'border-radius: 16px; margin: 24px 0; color: white;">'
-        '<h2 style="font-size: 34px; font-weight: 700; margin-bottom: 16px;">'
+        '<div style="background: #0F2744; padding: 32px 24px; border-radius: 16px; '
+        'margin: 24px 0; color: white;">'
+        '<h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">'
         'Need something fixed today?</h2>'
         '<p style="font-size: 18px; opacity: 0.9; margin-bottom: 24px;">'
         'Find a trusted professional and get your home back in shape.</p>',
@@ -634,45 +637,107 @@ def render_cta():
         )
 
     st.markdown(
-        '<p style="background: var(--fixmate-orange); padding: 12px 24px; '
-        'border-radius: 10px; margin: 24px 0; font-size: 14px; display: inline-block; '
-        'color: var(--fixmate-navy);">'
-        'No hidden fees • Verified experts • Flexible scheduling</p>',
+        '<p style="background: #10233F; padding: 12px 24px; border-radius: 10px; '
+        'margin: 24px 0; font-size: 14px; display: inline-block;">'
+        'No hidden fees â€¢ Verified experts â€¢ Flexible scheduling</p>',
         unsafe_allow_html=True,
     )
 
 
 def render_footer():
     """Render the footer."""
-    st.markdown(
-        """
-        <div style="background: var(--fixmate-navy); color: white; padding: 48px 24px 32px;
-                    border-radius: 0 0 16px 16px;">
-            <div style="display: flex; align-items: center; margin-bottom: 24px;">
-                <span style="font-size: 24px; margin-right: 8px;">🛠️</span>
-                <span style="font-size: 28px; font-weight: 700;">FixMate</span>
+    footer_cols, footer_bottom = st.columns([1, 1])
+
+    with footer_cols:
+        st.markdown(
+            """
+            <div style="
+                background: #0F2744; padding: 48px 24px 32px;
+                color: white; border-radius: 0 0 16px 16px;">
+                <div style="display: flex; align-items: center; margin-bottom: 24px;">
+                    <span style="font-size: 24px; margin-right: 8px;">ðŸ› ï¸</span>
+                    <span style="font-size: 28px; font-weight: 700;">FixMate</span>
+                </div>
+                <p style="color: #98A2B3; font-size: 14px; line-height: 1.6;">
+                    Trusted home services, one click away.
+                </p>
+                <div style="display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap;">
+                    <a href="#" style="
+                        color: #98A2B3; text-decoration: none; font-size: 14px;
+                        transition: color 0.2s;">Electrical</a>
+                    <a href="#" style="
+                        color: #98A2B3; text-decoration: none; font-size: 14px;
+                        transition: color 0.2s;">Plumbing</a>
+                    <a href="#" style="
+                        color: #98A2B3; text-decoration: none; font-size: 14px;
+                        transition: color 0.2s;">AC Repair</a>
+                    <a href="#" style="
+                        color: #98A2B3; text-decoration: none; font-size: 14px;
+                        transition: color 0.2s;">Cleaning</a>
+                    <a href="#" style="
+                        color: #98A2B3; text-decoration: none; font-size: 14px;
+                        transition: color 0.2s;">Carpentry</a>
+                </div>
             </div>
-            <p style="color: #98A2B3; font-size: 14px; line-height: 1.6;">
-                Trusted home services, one click away.
-            </p>
-            <div style="display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap;">
-                < 0
- 0
-  Vote: 
-                <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;
-                    transition: color 0.2s;">Electrical</a>
-                <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;
-                    transition: color 0.2s;">Plumbing</a>
-                <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;
-                    transition: color 0.2s;">AC Repair</a>
-                <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;
-                    transition: color 0.2s;">Cleaning</a>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    with footer_bottom:
+        st.markdown(
+            """
+            <div style="
+                background: #0F2744; padding: 24px; color: #98A2B3;
+                border-radius: 0 0 16px 16px; margin-top: -1px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 32px 24px; max-width: 1200px;">
+                    <div>
+                        <h4 style="color: white; font-size: 16px; margin-bottom: 20px;">Company</h4>
+                        <div style="color: #98A2B3; font-size: 14px; line-height: 1.8;">
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">About</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Professionals</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Reviews</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Careers</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: white; font-size: 16px; margin-bottom: 20px;">Support</h4>
+                        <div style="color: #98A2B3; font-size: 14px; line-height: 1.8;">
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Help Center</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Contact</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">FAQs</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Safety</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: white; font-size: 16px; margin-bottom: 20px;">Legal</h4>
+                        <div style="color: #98A2B3; font-size: 14px; line-height: 1.8;">
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Privacy Policy</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #E4E7EC;
+                            color: #98A2B3; font-size: 13px; text-align: center;">
+                    Â© 2026 FixMate. All rights reserved.
+                </div>
             </div>
-            <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #E4E7EC;
-                        color: #98A2B3; font-size: 13px; text-align: center;">
-                © 2026 FixMate. All rights reserved.
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+            """,
+            unsafe_allow_html=True,
+        )
+
+
+# ==========================================
+# MAIN APPLICATION
+# ==========================================
+
+render_navigation()
+render_hero()
+render_quick_service_categories()
+render_trust_indicators_and_stats()
+render_popular_services()
+render_how_it_works()
+render_why_fixmate()
+render_featured_professionals()
+render_customer_reviews()
+render_cta()
+render_footer()

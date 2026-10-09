@@ -44,7 +44,7 @@ def get_css():
 
     p, div {
         color: var(--fixmate-muted);
-        font-size: 15px;
+        font-size: 16px;
         line-height: 1.6;
     }
 
@@ -134,7 +134,7 @@ def get_css():
 
     .prof-card {
         background: var(--fixmate-card);
-        border-radius: 12px;
+        border-radius: 16px;
         border: 1px solid var(--fixmate-border);
         padding: 24px;
         transition: box-shadow 0.2s;
@@ -146,35 +146,35 @@ def get_css():
 
     .review-card {
         background: var(--fixmate-card);
-        border-radius: 12px;
+        border-radius: 16px;
         border: 1px solid var(--fixmate-border);
-        padding: 20px;
+        padding: 24px;
     }
 
     .section-title {
-        font-size: 32px;
+        font-size: 34px;
         font-weight: 700;
         color: var(--fixmate-navy);
-        margin-top: 40px;
-        margin-bottom: 20px;
+        margin-top: 48px;
+        margin-bottom: 24px;
     }
 
     .subheading {
         color: var(--fixmate-muted);
-        font-size: 16px;
-        margin-bottom: 35px;
+        font-size: 17px;
+        margin-bottom: 32px;
     }
 
     .chip {
         display: inline-block;
         background: var(--fixmate-soft-white);
         color: var(--fixmate-text);
-        padding: 6px 12px;
+        padding: 8px 16px;
         border-radius: 20px;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 500;
-        margin-right: 6px;
-        margin-bottom: 6px;
+        margin-right: 8px;
+        margin-bottom: 8px;
         transition: all 0.2s;
         border: 1px solid var(--fixmate-border);
     }
@@ -197,7 +197,7 @@ def get_css():
 
     .rating-stars {
         color: var(--fixmate-orange);
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .price-tag {
@@ -234,16 +234,12 @@ def get_css():
             max-width: 100%;
         }
 
-        .hero-title {
-            font-size: 32px;
-        }
-
         .section-title {
-            font-size: 24px;
+            font-size: 28px;
         }
 
         .chip {
-            font-size: 11px;
+            font-size: 12px;
             padding: 5px 8px;
         }
     }

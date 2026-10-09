@@ -1,0 +1,36 @@
+def render_popular_services():
+    """Render popular services grid."""
+    st.markdown("### Popular Services")
+    st.write("Find trusted professionals for your everyday home service needs.")
+    st.write("")
+
+    for start in range(0, len(services), 4):
+        columns = st.columns(4)
+        current_services = services[start : start + 4]
+
+        for column, service in zip(columns, current_services):
+            with column:
+                st.markdown(
+                    '<div class="card" style="height: 100%; display: flex; flex-direction: column;">'
+                    '<div style="font-size: 28px; margin-bottom: 16px;">'
+                    f'{service["icon"]}'
+                    '</div>'
+                    '<h4 style="color: var(--fixmate-navy); font-size: 18px; margin-bottom: 8px;">'
+                    f'{service["name"]}</h4>'
+                    '<p style="color: var(--fixmate-muted); font-size: 14px; flex-grow: 1;">'
+                    f'{service["short_description"]}</p>'
+                    '<span class="price-tag" style="margin-top: 12px; display: block;">'
+                    f'{service["starting_price"]}</span>'
+                    '<div style="margin-top: 16px; align-self: flex-start;">'
+                    '<a href="#" style="'
+                    'color: var(--fixmate-orange);'
+                    'font-weight: 600;'
+                    'font-size: 14px;'
+                    'text-decoration: underline;'
+                    'transition: color 0.2s;">Explore Service →</a>'
+                    '</div>'
+                    '</div>',
+                    unsafe_allow_html=True,
+                )
+
+
