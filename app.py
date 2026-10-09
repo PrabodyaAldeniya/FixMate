@@ -31,17 +31,48 @@ def render_navigation():
         st.title("FixMate")
 
     with menu:
-        n1, n2, n3, n4, n5 = st.columns(5)
-        with n1:
-            st.button("Home", key="nav_home", help="Home", disabled=True)
-        with n2:
-            st.button("Services", key="nav_services", help="Services")
-        with n3:
-            st.button("Professionals", key="nav_professionals", help="Professionals")
-        with n4:
-            st.button("Reviews", key="nav_reviews", help="Reviews")
-        with n5:
-            st.button("How It Works", key="nav_how_it_works", help="How It Works")
+        st.markdown(
+            """
+            <div style="display: flex; gap: 20px; padding-top: 4px;">
+                <a href="#" style="
+                    color: #667085;
+                    text-decoration: none;
+                    font-weight: 500;
+                    font-size: 14px;
+                    transition: color 0.2s;
+                ">Home</a>
+                <a href="#" style="
+                    color: #667085;
+                    text-decoration: none;
+                    font-weight: 500;
+                    font-size: 14px;
+                    transition: color 0.2s;
+                ">Services</a>
+                <a href="#" style="
+                    color: #667085;
+                    text-decoration: none;
+                    font-weight: 500;
+                    font-size: 14px;
+                    transition: color 0.2s;
+                ">How It Works</a>
+                <a href="#" style="
+                    color: #667085;
+                    text-decoration: none;
+                    font-weight: 500;
+                    font-size: 14px;
+                    transition: color 0.2s;
+                ">Professionals</a>
+                <a href="#" style="
+                    color: #667085;
+                    text-decoration: none;
+                    font-weight: 500;
+                    font-size: 14px;
+                    transition: color 0.2s;
+                ">Reviews</a>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
     with action:
         st.button(
@@ -51,7 +82,11 @@ def render_navigation():
             key="navbar_book_service",
         )
 
-    st.divider()
+    # Subtle border underneath navigation
+    st.markdown(
+        "<hr style='border: 1px solid #E4E7EC; margin-top: 0; margin-bottom: 0;'>",
+        unsafe_allow_html=True,
+    )
 
 
 def render_hero():
@@ -59,8 +94,14 @@ def render_hero():
     left, right = st.columns([1.15, 0.85], gap="large")
 
     with left:
+        st.markdown(
+            '<span style="background: #E7F5FF; color: #0F2744; padding: 4px 12px; '
+            'border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block;">'
+            'Trusted professionals for every home</span>',
+            unsafe_allow_html=True,
+        )
         st.title("Home repairs made")
-        st.subheader("simple, fast & reliable.")
+        st.markdown('<span style="color: #F97316;">simple, fast & reliable.</span>', unsafe_allow_html=True)
         st.write(
             "Book verified professionals for repairs, maintenance, cleaning "
             "and home improvement — all in one place."
@@ -71,6 +112,29 @@ def render_hero():
             placeholder="Search electrical, plumbing, AC repair...",
             key="hero_search",
         )
+
+        st.markdown("### Quick service categories")
+        chip1, chip2, chip3, chip4 = st.columns(4)
+        with chip1:
+            st.markdown(
+                '<span class="chip">Electrical</span>',
+                unsafe_allow_html=True,
+            )
+        with chip2:
+            st.markdown(
+                '<span class="chip">Plumbing</span>',
+                unsafe_allow_html=True,
+            )
+        with chip3:
+            st.markdown(
+                '<span class="chip">AC Repair</span>',
+                unsafe_allow_html=True,
+            )
+        with chip4:
+            st.markdown(
+                '<span class="chip">Cleaning</span>',
+                unsafe_allow_html=True,
+            )
 
         btn1, btn2 = st.columns(2)
         with btn1:
@@ -87,19 +151,53 @@ def render_hero():
                 key="hero_explore_services",
             )
 
+        st.markdown("### Mini trust points")
+        tp1, tp2, tp3 = st.columns(3)
+        with tp1:
+            st.markdown(
+                '<span class="verified-badge">Verified Experts</span>',
+                unsafe_allow_html=True,
+            )
+        with tp2:
+            st.markdown(
+                '<span class="verified-badge">Transparent Pricing</span>',
+                unsafe_allow_html=True,
+            )
+        with tp3:
+            st.markdown(
+                '<span class="verified-badge">Flexible Scheduling</span>',
+                unsafe_allow_html=True,
+            )
+
     with right:
-        st.markdown("---")
         prof = professionals[0]
-        st.markdown(f"### {prof['name']}")
-        st.markdown(f"*{prof['profession']}*")
-        badge = "Verified Professional" if prof.get("verified") else "Professional"
-        st.caption(badge)
-        st.caption(f"★ {prof['rating']} ({prof['review_count']} reviews)")
-        st.caption(f"📍 {prof['location']}")
-        st.caption(f"💪 {prof['experience']}")
-        st.caption(f"✅ {prof['completed_jobs']} completed jobs")
-        st.caption(f"🕒 {prof['availability']}")
-        st.caption(f"From Rs. {prof['starting_price']}")
+        st.markdown(
+            f'''
+            <div style="background: white; border-radius: 16px; border: 1px solid #E4E7EC; '
+            f'padding: 24px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <div style="width: 80px; height: 80px; border-radius: 50%; '
+                f'background: #F7F8FA; margin: 0 auto 16px; font-size: 32px; '
+                f'line-height: 80px; display: inline-block;">{prof["name"][0]}"</div>
+                <div style="color: #0F2744; font-weight: 600; margin-bottom: 4px;">{prof["name"]}</div>
+                <div style="color: #667085; font-size: 14px; margin-bottom: 8px;">{prof["profession"]}</div>
+                <div style="margin: 8px 0;">
+                    <span style="background: #E7F5FF; color: #0F2744; padding: 4px 12px; '
+                    'border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; margin-right: 6px;">'
+                    'Verified Professional</span>
+                    <span style="color: #F97316; font-size: 18px; margin-left: 8;">★ {prof["rating"]}</span>
+                </div>
+                <div style="color: #667085; font-size: 14px; margin-bottom: 12px;">{prof["location"]}</div>
+                <div style="margin-top: 16px;">
+                    <span style="background: #FFF4ED; color: #EA580C; padding: 4px 8px; '
+                    'border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; margin-right: 6px;">'
+                    'Available Today</span>
+                    <span style="color: #667085; font-size: 14px;">{prof["experience"]}</span>
+                </div>
+                <div style="font-size: 18px; color: #F97316; font-weight: 700; margin-top: 16px;">From Rs. {prof["starting_price"]}</div>
+            </div>
+            ''',
+            unsafe_allow_html=True,
+        )
 
 
 def render_quick_categories():
@@ -107,16 +205,15 @@ def render_quick_categories():
     st.write("")
     st.markdown("### Quick Service Categories")
 
-    cat1, cat2, cat3, cat4 = st.columns(4)
-
-    with cat1:
-        st.button("Electrical", key="cat_electrical", use_container_width=True)
-    with cat2:
-        st.button("Plumbing", key="cat_plumbing", use_container_width=True)
-    with cat3:
-        st.button("AC Repair", key="cat_ac", use_container_width=True)
-    with cat4:
-        st.button("Cleaning", key="cat_cleaning", use_container_width=True)
+    chip1, chip2, chip3, chip4 = st.columns(4)
+    with chip1:
+        st.markdown('<span class="chip">Electrical</span>', unsafe_allow_html=True)
+    with chip2:
+        st.markdown('<span class="chip">Plumbing</span>', unsafe_allow_html=True)
+    with chip3:
+        st.markdown('<span class="chip">AC Repair</span>', unsafe_allow_html=True)
+    with chip4:
+        st.markdown('<span class="chip">Cleaning</span>', unsafe_allow_html=True)
 
 
 def render_trust_statistics():
@@ -154,9 +251,9 @@ def render_popular_services():
     st.write("Find trusted professionals for your everyday home service needs.")
     st.write("")
 
-    for start in range(0, len(services), 3):
-        columns = st.columns(3)
-        current_services = services[start : start + 3]
+    for start in range(0, len(services), 4):
+        columns = st.columns(4)
+        current_services = services[start : start + 4]
 
         for column, service in zip(columns, current_services):
             with column:
@@ -164,70 +261,187 @@ def render_popular_services():
                 st.write(service["short_description"])
                 st.markdown(f"**Starting price: {service['starting_price']}**")
                 st.button(
-                    "Explore →",
+                    "Explore Service →",
                     key=f"service_{service['id']}",
-                    use_container_width=True,
+                    use_container_width=False,
                 )
+
+
+def render_emergency_banner():
+    """Render emergency service banner."""
+    st.markdown(
+        """
+        <div style="background: #FFF4ED; padding: 24px; border-radius: 16px; 
+                    margin: 24px 0; text-align: center; border-left: 4px solid #F97316;">
+            <h3 style="color: #EA580C; font-size: 24px; margin-bottom: 8px;">
+                Need urgent help?</h3>
+            <p style="color: #667085; font-size: 16px; margin-top: 0;">
+                Find available professionals for urgent electrical, plumbing or home repair issues.</p>
+            <div style="margin: 24px 0;">
+                <button style="
+                    background: #F97316; color: #0F2744; padding: 12px 24px;
+                    border-radius: 10px; font-weight: 600; font-size: 16px;
+                    border: none; cursor: pointer; transition: background 0.2s;">
+                    Find Emergency Help
+                </button>
+            </div>
+            <p style="color: #98A2B3; font-size: 14px;">
+                Frontend demo only - booking flow coming soon.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def render_how_it_works():
     """Render how fixate works steps."""
-    st.markdown("### How FixMate Works")
-    st.write("Book trusted home services in simple steps.")
+    st.markdown(
+        '<h2 style="color: #10233F; font-size: 32px; margin-bottom: 24px;">'
+        'Book a trusted professional in minutes.</h2>',
+        unsafe_allow_html=True,
+    )
+
     st.write("")
 
     step1, step2, step3, step4 = st.columns(4)
 
     with step1:
-        st.markdown("### 01")
-        st.write("Tell us what you need")
-        st.write("Select the repair or maintenance service your home needs.")
+        st.markdown(
+            '<div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;'
+            'padding: 24px; text-align: center; height: 100%; min-height: 140px;">'
+            '<div style="width: 48px; height: 48px; border-radius: 50px; background: #F97316;'
+            'color: white; font-size: 24px; display: flex; align-items: center;'
+            'justify-content: center; margin: 0 auto 16px; padding-top: 8px;">01</div>'
+            '<h4 style="color: #10233F; font-size: 18px; margin-bottom: 4px;">Tell us</h4>'
+            '<p style="color: #667085; font-size: 14px;">Tell us what you need</p>'
+            '</div>',
+            unsafe_allow_html=True,
+        )
 
     with step2:
-        st.markdown("### 02")
-        st.write("Choose your professional")
-        st.write("Choose a trusted professional based on skills and ratings.")
+        st.markdown(
+            '<div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;'
+            'padding: 24px; text-align: center; height: 100%; min-height: 140px;">'
+            '<div style="width: 48px; height: 48px; border-radius: 50px; background: #F97316;'
+            'color: white; font-size: 24px; display: flex; align-items: center;'
+            'justify-content: center; margin: 0 auto 16px; padding-top: 8px;">02</div>'
+            '<h4 style="color: #10233F; font-size: 18px; margin-bottom: 4px;">Choose</h4>'
+            '<p style="color: #667085; font-size: 14px;">Choose your professional</p>'
+            '</div>',
+            unsafe_allow_html=True,
+        )
 
     with step3:
-        st.markdown("### 03")
-        st.write("Pick your time")
-        st.write("Choose a convenient time slot for the service.")
+        st.markdown(
+            '<div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;'
+            'padding: 24px; text-align: center; height: 100%; min-height: 140px;">'
+            '<div style="width: 48px; height: 48px; border-radius: 50px; background: #F97316;'
+            'color: white; font-size: 24px; display: flex; align-items: center;'
+            'justify-content: center; margin: 0 auto 16px; padding-top: 8px;">03</div>'
+            '<h4 style="color: #10233F; font-size: 18px; margin-bottom: 4px;">Pick</h4>'
+            '<p style="color: #667085; font-size: 14px;">Pick your time</p>'
+            '</div>',
+            unsafe_allow_html=True,
+        )
 
     with step4:
-        st.markdown("### 04")
-        st.write("Get it done")
-        st.write("The professional will handle the job at your location.")
+        st.markdown(
+            '<div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;'
+            'padding: 24px; text-align: center; height: 100%; min-height: 140px;">'
+            '<div style="width: 48px; height: 48px; border-radius: 50px; background: #F97316;'
+            'color: white; font-size: 24px; display: flex; align-items: center;'
+            'justify-content: center; margin: 0 auto 16px; padding-top: 8px;">04</div>'
+            '<h4 style="color: #10233F; font-size: 18px; margin-bottom: 4px;">Get</h4>'
+            '<p style="color: #667085; font-size: 14px;">Get it done</p>'
+            '</div>',
+            unsafe_allow_html=True,
+        )
 
 
 def render_why_fixmate():
-    """Render why fixate section."""
+    """Render why FixMate section."""
     st.write("")
-    st.markdown("### Why FixMate")
+    st.markdown(
+        '<div style="background: #F2F6FA; padding: 32px 24px; border-radius: 16px; margin: 24px 0;">'
+        '<h2 style="color: #10233F; font-size: 32px; margin-bottom: 24px;">'
+        'Why homeowners choose FixMate</h2>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
 
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
         st.markdown(
-            "**Verified Professionals**\n"
-            "All pros are screened and verified."
+            """
+            <div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;
+                        padding: 24px; text-align: center; height: 100%;">
+                <div style="width: 48px; height: 48px; background: #E7F5FF; border-radius: 12px;
+                            display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                    <span style="color: #0F2744; font-size: 24px;">✓</span>
+                </div>
+                <h4 style="color: #10233F; font-size: 18px; margin-bottom: 8px;">Verified Professionals</h4>
+                <p style="color: #667085; font-size: 14px; line-height: 1.5;">
+                    All pros are screened and verified.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
 
     with col2:
         st.markdown(
-            "**Transparent Pricing**\n"
-            "Clear upfront costs with no hidden fees."
+            """
+            <div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;
+                        padding: 24px; text-align: center; height: 100%;">
+                <div style="width: 48px; height: 48px; background: #FFF4ED; border-radius: 12px;
+                            display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                    <span style="color: #EA580C; font-size: 24px;">₹</span>
+                </div>
+                <h4 style="color: #10233F; font-size: 18px; margin-bottom: 8px;">Transparent Pricing</h4>
+                <p style="color: #667085; font-size: 14px; line-height: 1.5;">
+                    Clear upfront costs with no hidden fees.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
 
     with col3:
         st.markdown(
-            "**Flexible Scheduling**\n"
-            "Book appointments that fit your schedule."
+            """
+            <div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;
+                        padding: 24px; text-align: center; height: 100%;">
+                <div style="width: 48px; height: 48px; background: #E7F5FF; border-radius: 12px;
+                            display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                    <span style="color: #0F2744; font-size: 24px;">⏰</span>
+                </div>
+                <h4 style="color: #10233F; font-size: 18px; margin-bottom: 8px;">Flexible Scheduling</h4>
+                <p style="color: #667085; font-size: 14px; line-height: 1.5;">
+                    Book appointments that fit your schedule.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
 
     with col4:
         st.markdown(
-            "**Service Support**\n"
-            "We're here if you need help after the job."
+            """
+            <div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;
+                        padding: 24px; text-align: center; height: 100%;">
+                <div style="width: 48px; height: 48px; background: #E7F5FF; border-radius: 12px;
+                            display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                    <span style="color: #0F2744; font-size: 24px;">💬</span>
+                </div>
+                <h4 style="color: #10233F; font-size: 18px; margin-bottom: 8px;">Service Support</h4>
+                <p style="color: #667085; font-size: 14px; line-height: 1.5;">
+                    We're here if you need help after the job.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
 
 
@@ -245,9 +459,10 @@ def render_featured_professionals():
                 initials = prof['name'].split()[0][0]
                 st.markdown(f"**{prof['name']}**")
                 st.markdown(f"*{prof['profession']}*")
-                badge_color = "#0F2744" if prof.get("verified") else "#667085"
                 st.markdown(
-                    f'<span style="background: #E7F5FF; color: #0F2744; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; margin-top: 8px;">Verified Professional</span>',
+                    f'<span style="background: #E7F5FF; color: #0F2744; padding: 4px 12px; '
+                    'border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; '
+                    'margin-top: 8;">Verified Professional</span>',
                     unsafe_allow_html=True,
                 )
                 st.caption(f"★ {prof['rating']} ({prof['review_count']} reviews)")
@@ -258,12 +473,12 @@ def render_featured_professionals():
                 st.caption(f"From Rs. {prof['starting_price']}")
                 st.button(
                     "View Profile",
-                    key=f"prof_view_{prof['id']}",
+                    key=f"view_profile_{prof['id']}",
                     use_container_width=True,
                 )
                 st.button(
                     "Book Now",
-                    key=f"prof_book_{prof['id']}",
+                    key=f"book_now_{prof['id']}",
                     use_container_width=True,
                 )
 
@@ -272,28 +487,72 @@ def render_customer_reviews():
     """Render customer reviews section."""
     st.write("")
     st.markdown("### Customer Reviews")
+    st.write("")
+
+    st.markdown(
+        '<p style="color: #667085; font-size: 16px; margin-bottom: 24px;">'
+        'Real experiences from customers who trusted FixMate.</p>',
+        unsafe_allow_html=True,
+    )
 
     for review in reviews:
         with st.container():
-            review_text = review.get("review", "")
-            st.markdown(f"> **{review_text}**")
             customer_name = review.get("customer_name", "Customer")
+            review_text = review.get("review", "")
             service_name = review.get("service", "")
             rating = review.get("rating", 5)
             date = review.get("date", "")
-            st.caption(f"{customer_name} · {service_name} · {date}")
-            st.divider()
+
+            st.markdown(
+                f'<div style="background: white; border-radius: 12px; border: 1px solid #E4E7EC;'
+                f'padding: 20px; height: 100%;">'
+                f'<div style="display: flex; align-items: center; margin-bottom: 12px;">'
+                f'<span style="color: #F97316; font-size: 18px;">★★★★★</span>'
+                f'</div>'
+                f'<p style="color: #667085; font-size: 14px; margin: 8px 0;">{review_text}</p>'
+                f'<div style="display: flex; justify-content: space-between; '
+                f'align-items: center; color: #667085; font-size: 13px;">'
+                f'<span>{customer_name}</span>'
+                f'<span>{service_name} · {date}</span>'
+                f'</div>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
+            st.write("")
+
+
+def render_trust_row():
+    """Render trust/safety row before CTA."""
+    st.write("")
+    st.markdown(
+        '<div style="background: #F7F8FA; padding: 16px 24px; border-radius: 12px; '
+        'margin: 24px 0; border: 1px solid #E4E7EC; display: flex; justify-content: '
+        'space-between; align-items: center; flex-wrap: wrap;">'
+        '<span style="color: #667085; font-size: 14px;">Verified Professionals</span>'
+        '<span style="color: #667085; font-size: 14px;">Secure Booking Process</span>'
+        '<span style="color: #667085; font-size: 14px;">Transparent Pricing</span>'
+        '<span style="color: #667085; font-size: 14px;">Customer Support</span>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
 
 
 def render_cta():
     """Render call-to-action section."""
     st.write("")
+
+    st.markdown(
+        '<div style="background: #0F2744; padding: 32px 24px; border-radius: 16px; '
+        'margin: 24px 0; color: white;">'
+        '<h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">'
+        'Need something fixed today?</h2>'
+        '<p style="font-size: 18px; opacity: 0.9; margin-bottom: 24px;">'
+        'Find a trusted professional and get your home back in shape.</p>',
+        unsafe_allow_html=True,
+    )
+
     st.write("")
 
-    st.markdown("### Need something fixed today?")
-    st.write("Find a trusted professional and get your home back in shape.")
-
-    st.write("")
     cta_left, cta_center, cta_right = st.columns([3, 2, 3])
 
     with cta_center:
@@ -311,41 +570,94 @@ def render_cta():
             key="cta_browse_services",
         )
 
+    st.markdown(
+        '<p style="background: #10233F; padding: 12px 24px; border-radius: 10px; '
+        'margin: 24px 0; font-size: 14px; display: inline-block;">'
+        'No hidden fees • Verified experts • Flexible scheduling</p>',
+        unsafe_allow_html=True,
+    )
+
 
 def render_footer():
     """Render the footer."""
-    st.write("")
-    st.divider()
+    footer_cols, footer_bottom = st.columns([1, 1])
 
-    footer1, footer2, footer3, footer4 = st.columns([3, 2, 2, 2])
+    with footer_cols:
+        st.markdown(
+            """
+            <div style="
+                background: #0F2744; padding: 48px 24px 32px;
+                color: white; border-radius: 0 0 16px 16px;">
+                <div style="display: flex; align-items: center; margin-bottom: 24px;">
+                    <span style="font-size: 24px; margin-right: 8px;">🛠️</span>
+                    <span style="font-size: 28px; font-weight: 700;">FixMate</span>
+                </div>
+                <p style="color: #98A2B3; font-size: 14px; line-height: 1.6;">
+                    Trusted home services, one click away.
+                </p>
+                <div style="display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap;">
+                    <a href="#" style="
+                        color: #98A2B3; text-decoration: none; font-size: 14px;
+                        transition: color 0.2s;">Electrical</a>
+                    <a href="#" style="
+                        color: #98A2B3; text-decoration: none; font-size: 14px;
+                        transition: color 0.2s;">Plumbing</a>
+                    <a href="#" style="
+                        color: #98A2B3; text-decoration: none; font-size: 14px;
+                        transition: color 0.2s;">AC Repair</a>
+                    <a href="#" style="
+                        color: #98A2B3; text-decoration: none; font-size: 14px;
+                        transition: color 0.2s;">Cleaning</a>
+                    <a href="#" style="
+                        color: #98A2B3; text-decoration: none; font-size: 14px;
+                        transition: color 0.2s;">Carpentry</a>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
-    with footer1:
-        st.markdown("FixMate")
-        st.write("Trusted home services, one click away.")
-
-    with footer2:
-        st.markdown("**Services**")
-        st.write("Electrical")
-        st.write("Plumbing")
-        st.write("AC Repair")
-        st.write("Carpentry")
-
-    with footer3:
-        st.markdown("**Company**")
-        st.write("About")
-        st.write("Careers")
-        st.write("Press")
-
-    with footer4:
-        st.markdown("**Support**")
-        st.write("Help Center")
-        st.write("Contact")
-        st.write("FAQ")
-
-    st.divider()
-    st.markdown("© 2026 FixMate. All rights reserved.")
-    st.markdown("Privacy")
-    st.markdown("Terms")
+    with footer_bottom:
+        st.markdown(
+            """
+            <div style="
+                background: #0F2744; padding: 24px; color: #98A2B3;
+                border-radius: 0 0 16px 16px; margin-top: -1px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 32px 24px; max-width: 1200px;">
+                    <div>
+                        <h4 style="color: white; font-size: 16px; margin-bottom: 20px;">Company</h4>
+                        <div style="color: #98A2B3; font-size: 14px; line-height: 1.8;">
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">About</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Professionals</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Reviews</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Careers</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: white; font-size: 16px; margin-bottom: 20px;">Support</h4>
+                        <div style="color: #98A2B3; font-size: 14px; line-height: 1.8;">
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Help Center</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Contact</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">FAQs</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Safety</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: white; font-size: 16px; margin-bottom: 20px;">Legal</h4>
+                        <div style="color: #98A2B3; font-size: 14px; line-height: 1.8;">
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Privacy Policy</a>
+                            <a href="#" style="color: #98A2B3; text-decoration: none; font-size: 14px;">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #E4E7EC;
+                            color: #98A2B3; font-size: 13px; text-align: center;">
+                    © 2026 FixMate. All rights reserved.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
 
 # ==========================================
@@ -361,5 +673,6 @@ render_how_it_works()
 render_why_fixmate()
 render_featured_professionals()
 render_customer_reviews()
+render_trust_row()
 render_cta()
 render_footer()
